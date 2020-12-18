@@ -16,10 +16,6 @@ public class User {
 		return userId;
 	}
 
-	public void setUserId(Long userId) {
-		this.userId = userId;
-	}
-
 	public String getUserName() {
 		return userName;
 	}

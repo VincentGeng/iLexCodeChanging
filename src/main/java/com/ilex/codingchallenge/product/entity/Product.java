@@ -2,6 +2,8 @@ package com.ilex.codingchallenge.product.entity;
 
 import java.util.List;
 
+import com.ilex.codingchallenge.tag.Tag;
+
 /**
  * @author Vincent Geng
  *
@@ -11,7 +13,7 @@ public class Product {
 	private Long productId;
 	private String productName;
 	private String productDescription;
-	private List<String> tags;
+	private List<Tag> tags;
 	private Double price;
 	
 	public Product() {
@@ -19,10 +21,6 @@ public class Product {
 
 	public Long getProductId() {
 		return productId;
-	}
-
-	public void setProductId(Long productId) {
-		this.productId = productId;
 	}
 
 	public String getProductName() {
@@ -40,12 +38,12 @@ public class Product {
 	public void setProductDescription(String productDescription) {
 		this.productDescription = productDescription;
 	}
-
-	public List<String> getTags() {
+	
+	public List<Tag> getTags() {
 		return tags;
 	}
 
-	public void setTags(List<String> tags) {
+	public void setTags(List<Tag> tags) {
 		this.tags = tags;
 	}
 
