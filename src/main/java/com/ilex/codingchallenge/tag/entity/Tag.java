@@ -1,4 +1,4 @@
-package com.ilex.codingchallenge.tag;
+package com.ilex.codingchallenge.tag.entity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +36,13 @@ public class Tag {
 	public Tag() {
 	}
 	
+	/**
+	 * @param tagName
+	 */
+	public Tag(String tagName) {
+		this.name = tagName;
+	}
+
 	public Long getTagId() {
 		return tagId;
 	}

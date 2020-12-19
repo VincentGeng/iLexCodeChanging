@@ -15,7 +15,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import com.ilex.codingchallenge.order.entity.Order;
-import com.ilex.codingchallenge.tag.Tag;
+import com.ilex.codingchallenge.tag.entity.Tag;
 
 /**
  * @author Vincent Geng
