@@ -1,5 +1,6 @@
 package com.ilex.codingchallenge.order.service;
 
+import java.util.Date;
 import java.util.List;
 
 import com.ilex.codingchallenge.order.dto.OrderDTO;
@@ -17,5 +18,13 @@ public interface OrderService {
 	 * @return
 	 */
 	List<Order> placeOrders(OrderDTO orderDTO);
+
+	/**
+	 * @param userId
+	 * @param fromDate
+	 * @param toDate
+	 * @return
+	 */
+	List<Order> findByUserUserIdAndCreationDateBetween(Long userId, Date fromDate, Date toDate);
 
 }

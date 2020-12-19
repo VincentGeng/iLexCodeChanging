@@ -53,4 +53,13 @@ public class OrderServiceImpl implements OrderService {
 		return (List<Order>) orderRepository.saveAll(orders);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.ilex.codingchallenge.order.service.OrderService#findByUserUserIdAndCreationDateBetween(java.lang.Long, java.util.Date, java.util.Date)
+	 */
+	@Override
+	public List<Order> findByUserUserIdAndCreationDateBetween(Long userId, Date fromDate, Date toDate) {
+		// TODO Auto-generated method stub
+		return orderRepository.findByUserUserIdAndCreationDateBetween(userId, fromDate, toDate);
+	}
+
 }
