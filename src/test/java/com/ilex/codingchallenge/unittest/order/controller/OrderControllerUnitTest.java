@@ -3,12 +3,15 @@ package com.ilex.codingchallenge.unittest.order.controller;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.util.Arrays;
+import java.util.Date;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -46,6 +49,27 @@ public class OrderControllerUnitTest {
 								.contentType(MediaType.APPLICATION_JSON)
 								.content(new ObjectMapper().writeValueAsString(OrderTestUtils.mockOrderDTO())))
 					.andExpect(status().isCreated())
+					.andExpect(jsonPath("$").exists())
+					.andExpect(jsonPath("$.*", hasSize(1)))
+					.andExpect(jsonPath("$[0].orderId", is(1)))
+					.andExpect(jsonPath("$[0].user.userId", is(1)))
+					.andExpect(jsonPath("$[0].user.userName", is("User 1")))
+					.andExpect(jsonPath("$[0].creationDate", is("2020-12-19T16:00:00.000+00:00")))
+					.andExpect(jsonPath("$[0].price", is(1300.00)))
+					.andExpect(jsonPath("$[0].product.productId", is(1)))
+					.andExpect(jsonPath("$[0].product.productName", is("iPhone 12")))
+					.andExpect(jsonPath("$[0].product.productDescription", is("Smart phone")));
+	}
+	
+	@Test
+	@DisplayName("GET /orders list orders")
+	public void testListOrders() throws Exception {
+		when(orderService.findByUserUserIdAndCreationDateBetween(anyLong(), any(Date.class), any(Date.class))).thenReturn(Arrays.asList(OrderTestUtils.mockOrder()));
+		this.mockMvc.perform(get("/orders")
+				.param("userId", "1")
+				.param("fromDate", "20/12/2020")
+				.param("toDate", "21/12/2020"))
+					.andExpect(status().isOk())
 					.andExpect(jsonPath("$").exists())
 					.andExpect(jsonPath("$.*", hasSize(1)))
 					.andExpect(jsonPath("$[0].orderId", is(1)))
