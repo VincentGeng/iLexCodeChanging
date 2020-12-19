@@ -52,5 +52,21 @@ public class Tag {
 	public String getName() {
 		return name;
 	}
+
+	public List<Product> getProducts() {
+		return products;
+	}
+
+	public void setProducts(List<Product> products) {
+		this.products = products;
+	}
+
+	public void setTagId(Long tagId) {
+		this.tagId = tagId;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 	
 }
