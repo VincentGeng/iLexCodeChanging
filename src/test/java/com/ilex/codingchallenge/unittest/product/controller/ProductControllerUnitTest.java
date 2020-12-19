@@ -48,8 +48,8 @@ public class ProductControllerUnitTest {
 		when(productService.findAll()).thenReturn(products);
 		this.mockMvc.perform(get("/products"))
 					.andExpect(status().isOk())
-					.andExpect(jsonPath("$", hasSize(1)))
-					.andExpect(jsonPath("$[0].productId", is(1l)))
+					.andExpect(jsonPath("$.*", hasSize(1)))
+					.andExpect(jsonPath("$[0].productId", is(1)))
 					.andExpect(jsonPath("$[0].productName", is("iPhone 12")))
 					.andExpect(jsonPath("$[0].productDescription", is("Smart phone")))
 					.andExpect(jsonPath("$[0].tags[0].name", is("PHONE")));
@@ -63,11 +63,11 @@ public class ProductControllerUnitTest {
 								.contentType(MediaType.APPLICATION_JSON)
 								.content(new ObjectMapper().writeValueAsString(ProductTestUtils.mockProductDTO())))
 					.andExpect(status().isCreated())
-					.andExpect(jsonPath("$", hasSize(1)))
-					.andExpect(jsonPath("$[0].productId", is(1l)))
-					.andExpect(jsonPath("$[0].productName", is("iPhone 12")))
-					.andExpect(jsonPath("$[0].productDescription", is("Smart phone")))
-					.andExpect(jsonPath("$[0].tags[0].name", is("PHONE")));
+					.andExpect(jsonPath("$").exists())
+					.andExpect(jsonPath("$.productId", is(1)))
+					.andExpect(jsonPath("$.productName", is("iPhone 12")))
+					.andExpect(jsonPath("$.productDescription", is("Smart phone")))
+					.andExpect(jsonPath("$.tags[0].name", is("PHONE")));
 	}
 
 }
