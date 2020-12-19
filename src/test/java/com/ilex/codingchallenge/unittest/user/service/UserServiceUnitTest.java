@@ -9,27 +9,30 @@ import java.util.Optional;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.ilex.codingchallenge.unittest.utils.UserTestUtils;
 import com.ilex.codingchallenge.user.entity.User;
 import com.ilex.codingchallenge.user.repository.UserRepository;
 import com.ilex.codingchallenge.user.service.UserService;
+import com.ilex.codingchallenge.user.service.UserServiceImpl;
 
 /**
  * @author Vincent Geng
  *
  * Created on Dec 19, 2020
  */
-@SpringBootTest
+@DisplayName("Product Service Unit Test")
+@ExtendWith(MockitoExtension.class)
 public class UserServiceUnitTest {
 	
-	@Autowired
-    private UserService userService;
+	@InjectMocks
+    private UserService userService = new UserServiceImpl();
 	
-	@MockBean
+	@Mock
 	private UserRepository userRepository;
 	
 	@Test
@@ -39,7 +42,7 @@ public class UserServiceUnitTest {
 		Optional<User> user = userService.findById(1l);
 		
 		Assertions.assertTrue(user.isPresent(), "User was not found.");
-		Assertions.assertSame(user.get().getUserId(), "1l");
+		Assertions.assertSame(user.get().getUserId(), 1l);
 		Assertions.assertSame(user.get().getUserName(), "User 1");
 	}
 	
@@ -49,7 +52,7 @@ public class UserServiceUnitTest {
 		when(userRepository.save(any(User.class))).thenReturn(UserTestUtils.mockUser());
 		User user = userService.save(UserTestUtils.mockUserDTO());
 		
-		Assertions.assertSame(user.getUserId(), "1l");
+		Assertions.assertSame(user.getUserId(), 1l);
 		Assertions.assertSame(user.getUserName(), "User 1");
 	}
 	

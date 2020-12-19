@@ -1,8 +1,8 @@
 package com.ilex.codingchallenge.unittest.product.service;
 
-import static org.mockito.Mockito.when;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyList;
+import static org.mockito.Mockito.when;
 
 import java.util.Arrays;
 import java.util.List;
@@ -10,13 +10,15 @@ import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.ilex.codingchallenge.product.entity.Product;
 import com.ilex.codingchallenge.product.repository.ProductRepository;
 import com.ilex.codingchallenge.product.service.ProductService;
+import com.ilex.codingchallenge.product.service.ProductServiceImpl;
 import com.ilex.codingchallenge.tag.service.TagService;
 import com.ilex.codingchallenge.unittest.utils.ProductTestUtils;
 import com.ilex.codingchallenge.unittest.utils.TagTestUtils;
@@ -26,16 +28,17 @@ import com.ilex.codingchallenge.unittest.utils.TagTestUtils;
  *
  * Created on Dec 19, 2020
  */
-@SpringBootTest
+@DisplayName("Product Service Unit Test")
+@ExtendWith(MockitoExtension.class)
 public class ProductServiceUnitTest {
 	
-	@Autowired
-    private ProductService productService;
+	@InjectMocks
+    private ProductService productService = new ProductServiceImpl();
 	
-	@MockBean
+	@Mock
 	private ProductRepository productRepository;
 	
-	@MockBean
+	@Mock
 	private TagService tagService;
 	
 	@Test

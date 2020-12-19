@@ -9,13 +9,15 @@ import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.ilex.codingchallenge.tag.entity.Tag;
 import com.ilex.codingchallenge.tag.repository.TagRepository;
 import com.ilex.codingchallenge.tag.service.TagService;
+import com.ilex.codingchallenge.tag.service.TagServiceImpl;
 import com.ilex.codingchallenge.unittest.utils.TagTestUtils;
 
 /**
@@ -23,13 +25,14 @@ import com.ilex.codingchallenge.unittest.utils.TagTestUtils;
  *
  * Created on Dec 19, 2020
  */
-@SpringBootTest
+@DisplayName("Tag Service Unit Test")
+@ExtendWith(MockitoExtension.class)
 public class TagServiceUnitTest {
 	
-	@Autowired
-    private TagService tagService;
+	@InjectMocks
+    private TagService tagService = new TagServiceImpl();
 	
-	@MockBean
+	@Mock
 	private TagRepository tagRepository;
 	
 	@Test
