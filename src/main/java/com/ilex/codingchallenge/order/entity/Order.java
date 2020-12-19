@@ -14,7 +14,6 @@ import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.ilex.codingchallenge.product.entity.Product;
 import com.ilex.codingchallenge.user.entity.User;
 
