@@ -2,8 +2,11 @@ package com.ilex.codingchallenge.unittest.utils;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 
+import com.ilex.codingchallenge.order.dto.OrderDTO;
+import com.ilex.codingchallenge.order.dto.ProductPriceDTO;
 import com.ilex.codingchallenge.order.entity.Order;
 
 /**
@@ -22,6 +25,19 @@ public class OrderTestUtils {
 		order.setPrice(1300.00);
 		order.setProduct(ProductTestUtils.mockProduct());
 		order.setUser(UserTestUtils.mockUser());
+		return order;
+	}
+
+	/**
+	 * @return
+	 */
+	public static OrderDTO mockOrderDTO() {
+		OrderDTO order = new OrderDTO();
+		ProductPriceDTO productPriceDto = new ProductPriceDTO();
+		productPriceDto.setProductId(1l);
+		productPriceDto.setPrice(1300.00);
+		order.setProducts(Arrays.asList(productPriceDto));
+		order.setUserId(1l);
 		return order;
 	}
 }

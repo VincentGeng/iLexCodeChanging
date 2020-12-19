@@ -48,6 +48,7 @@ public class ProductControllerUnitTest {
 		when(productService.findAll()).thenReturn(products);
 		this.mockMvc.perform(get("/products"))
 					.andExpect(status().isOk())
+					.andExpect(jsonPath("$").exists())
 					.andExpect(jsonPath("$.*", hasSize(1)))
 					.andExpect(jsonPath("$[0].productId", is(1)))
 					.andExpect(jsonPath("$[0].productName", is("iPhone 12")))
