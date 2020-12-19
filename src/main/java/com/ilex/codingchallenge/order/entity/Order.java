@@ -27,12 +27,12 @@ import com.ilex.codingchallenge.user.entity.User;
  * Created on Dec 18, 2020
  */
 @Entity
-@Table(name = "order")
+@Table(name = "customer_order")
 public class Order {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id", columnDefinition = "int(11)", nullable = false)
+	@Column(name = "order_id", columnDefinition = "int(11)", nullable = false)
 	private Long orderId;
 	
 	@ManyToOne
