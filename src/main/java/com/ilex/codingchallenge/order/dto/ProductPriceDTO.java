@@ -10,6 +10,9 @@ public class ProductPriceDTO {
 	private Long productId;
 	private Double price;
 	
+	public ProductPriceDTO() {
+	}
+	
 	public ProductPriceDTO(Long productId, Double price) {
 		super();
 		this.productId = productId;

@@ -2,6 +2,7 @@ package com.ilex.codingchallenge.user.service;
 
 import java.util.Optional;
 
+import com.ilex.codingchallenge.user.dto.UserDTO;
 import com.ilex.codingchallenge.user.entity.User;
 
 /**
@@ -16,5 +17,11 @@ public interface UserService {
 	 * @return
 	 */
 	Optional<User> findById(Long userId);
+
+	/**
+	 * @param userDTO
+	 * @return
+	 */
+	User save(UserDTO userDTO);
 
 }

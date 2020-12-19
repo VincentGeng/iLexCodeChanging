@@ -43,7 +43,6 @@ public class Order {
 	@Column(name = "price", columnDefinition = "decimal(12, 2)")
 	private Double price;
 	
-	@JsonIgnore
 	@OneToOne
 	@JoinColumn(name = "product_id", columnDefinition = "int(11)", nullable = false)
 	private Product product;

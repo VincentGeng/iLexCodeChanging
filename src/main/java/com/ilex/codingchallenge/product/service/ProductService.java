@@ -1,9 +1,7 @@
 package com.ilex.codingchallenge.product.service;
 
-import java.util.Collection;
 import java.util.List;
 
-import com.ilex.codingchallenge.order.entity.Order;
 import com.ilex.codingchallenge.product.dto.ProductDTO;
 import com.ilex.codingchallenge.product.entity.Product;
 
@@ -21,7 +19,7 @@ public interface ProductService {
 
 	/**
 	 * @param product
-	 * @return
+	 * @returno
 	 */
 	Product addNewProduct(ProductDTO product);
 
