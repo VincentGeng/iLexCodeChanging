@@ -58,7 +58,6 @@ public class OrderServiceImpl implements OrderService {
 	 */
 	@Override
 	public List<Order> findByUserUserIdAndCreationDateBetween(Long userId, Date fromDate, Date toDate) {
-		// TODO Auto-generated method stub
 		return orderRepository.findByUserUserIdAndCreationDateBetween(userId, fromDate, toDate);
 	}
 
