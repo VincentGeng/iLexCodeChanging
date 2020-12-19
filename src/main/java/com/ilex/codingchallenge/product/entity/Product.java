@@ -12,8 +12,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.ilex.codingchallenge.order.entity.Order;
 import com.ilex.codingchallenge.tag.entity.Tag;
 
@@ -37,9 +39,6 @@ public class Product {
 	@Column(name = "product_desc", columnDefinition = "varchar(255)")
 	private String productDescription;
 	
-	@Column(name = "price", columnDefinition = "decimal(12, 2)")
-	private Double price;
-	
 	@ManyToMany(cascade = { CascadeType.ALL })
     @JoinTable(
         name = "product_tag", 
@@ -48,8 +47,9 @@ public class Product {
     )
 	private List<Tag> tags = new ArrayList<>();
 	
-	@ManyToMany(mappedBy = "products")
-    private List<Order> orders = new ArrayList<>();
+	@JsonIgnore
+	@OneToOne(mappedBy="product", cascade=CascadeType.ALL)
+    private Order order;
 	
 	public Product() {
 	}
@@ -82,12 +82,12 @@ public class Product {
 		this.tags = tags;
 	}
 
-	public Double getPrice() {
-		return price;
+	public Order getOrder() {
+		return order;
 	}
 
-	public void setPrice(Double price) {
-		this.price = price;
+	public void setOrder(Order order) {
+		this.order = order;
 	}
-
+	
 }

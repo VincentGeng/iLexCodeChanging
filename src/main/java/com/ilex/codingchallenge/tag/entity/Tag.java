@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.ilex.codingchallenge.product.entity.Product;
 
 /**
@@ -30,6 +31,7 @@ public class Tag {
 	@Column(name = "name", columnDefinition = "varchar(100)", nullable = false)
 	private String name;
 	
+	@JsonIgnore
 	@ManyToMany(mappedBy = "tags")
     private List<Product> products = new ArrayList<>();
 	

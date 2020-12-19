@@ -1,23 +1,20 @@
 package com.ilex.codingchallenge.order.entity;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.ilex.codingchallenge.product.entity.Product;
 import com.ilex.codingchallenge.user.entity.User;
 
@@ -43,15 +40,28 @@ public class Order {
 	@Column(name = "creation_date", columnDefinition = "datetime")
 	private Date creationDate;
 	
-	@ManyToMany(cascade = { CascadeType.ALL })
-    @JoinTable(
-        name = "order_product", 
-        joinColumns = { @JoinColumn(name = "order_id") }, 
-        inverseJoinColumns = { @JoinColumn(name = "product_id") }
-    )
-	private List<Product> products = new ArrayList<>();
+	@Column(name = "price", columnDefinition = "decimal(12, 2)")
+	private Double price;
+	
+	@JsonIgnore
+	@OneToOne
+	@JoinColumn(name = "product_id", columnDefinition = "int(11)", nullable = false)
+	private Product product;
 	
 	public Order() {
+	}
+
+	/**
+	 * @param user
+	 * @param date
+	 * @param price
+	 * @param product
+	 */
+	public Order(User user, Date creationDate, Double price, Product product) {
+		this.user = user;
+		this.creationDate = creationDate;
+		this.price = price;
+		this.product = product;
 	}
 
 	public Long getOrderId() {
@@ -70,12 +80,12 @@ public class Order {
 		this.user = user;
 	}
 
-	public List<Product> getProducts() {
-		return products;
+	public Product getProduct() {
+		return product;
 	}
 
-	public void setProducts(List<Product> products) {
-		this.products = products;
+	public void setProduct(Product product) {
+		this.product = product;
 	}
 
 	public Date getCreationDate() {
@@ -84,6 +94,14 @@ public class Order {
 
 	public void setCreationDate(Date creationDate) {
 		this.creationDate = creationDate;
+	}
+
+	public Double getPrice() {
+		return price;
+	}
+
+	public void setPrice(Double price) {
+		this.price = price;
 	}
 	
 }

@@ -68,4 +68,12 @@ public class ProductServiceImpl implements ProductService {
 		return productRepository.save(product);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.ilex.codingchallenge.product.service.ProductService#findAllById(java.util.List)
+	 */
+	@Override
+	public List<Product> findAllById(List<Long> productIds) {
+		return (List<Product>) productRepository.findAllById(productIds);
+	}
+
 }
