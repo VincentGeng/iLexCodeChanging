@@ -17,6 +17,8 @@ $ mvn spring-boot:run
 ```
 
 ## 4. Test API calls
+#### Open another terminal to run below codes
+
 ### 4.1 Add user
 ```
 > curl -v -X POST localhost:8080/users -H "Content-type:application/json" -d "{\"userName\":\"User 1\"}"
