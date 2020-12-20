@@ -44,7 +44,7 @@ $ mvn spring-boot:run
 
 ### 4.6 List orders
 ```
-> curl -v localhost:8080/orders
+> curl -X GET "http://localhost:8080/orders?userId=1&fromDate=01/12/2020&toDate=01/01/2021"
 ```
 
 ## 5. Run unit test cases (make sure you are still under /iLexCodingChallenge folder)
