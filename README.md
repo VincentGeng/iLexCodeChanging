@@ -17,7 +17,7 @@ $ mvn spring-boot:run
 ```
 
 ## 4. Test API calls
-#### Open another terminal to run below codes
+#### Open another terminal to run below commands
 
 ### 4.1 Add user
 ```
