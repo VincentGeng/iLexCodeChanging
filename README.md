@@ -2,8 +2,8 @@
 #### Below are the detailed steps to guide you run the application locally
 
 ## 1. Prerequisites
-### 1.1 Make sure Java, Maven and Git are installed in your local enviroment
-### 1.2 Use your existing github account to fork this project
+#### 1.1 Make sure Java, Maven and Git are installed in your local enviroment
+#### 1.2 Use your existing github account to fork this project
 
 ## 2. Create an empty folder and git clone this project
 ```
