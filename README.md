@@ -39,7 +39,7 @@ $ mvn spring-boot:run
 
 ### 4.5 Add order
 ```
-> curl -v -X POST localhost:8080/orders -H "Content-type:application/json" -d "{"products":[{"productId":1,"price":"1250.00"},{"productId":2,"price":"1439.00"}],"userId":1}"
+> curl -v -X POST localhost:8080/orders -H "Content-type:application/json" -d "{\"products\":[{\"productId\":1,\"price\":\"1250.00\"},{\"productId\":2,\"price\":\"1439.00\"}],\"userId\":1}"
 ```
 
 ### 4.6 List orders
